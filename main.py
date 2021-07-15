@@ -19,7 +19,13 @@ import time
 chemin = '~/Downloads'
 
 if True :
-  file = os.listdir()
+  cmd = os.popen(f"ls {chemin}")
+  f = cmd.read().split('\n')
+  
+  file = []
+  for i in f:
+    if i != '':
+      file.append(i)
   if 'Image' not in file :
     os.system("mkdir "+ str(chemin) + "/ Image")
   if 'Exe' not in file :
@@ -52,8 +58,15 @@ Zip = ['zip','rar','7z']
 Code = ['py','html','css','json','bat','sh','htm','md','adb','ahk','applescript','asm','bas','bf','birl','bmp','bro','c','cc','cljc','cmd','vbs','chai','cpp','cs','cr','sql','smv','swift']
 
 while True :
-  file = os.listdir()
+  cmd = os.popen(f"ls {chemin}")
+  f = cmd.read().split('\n')
+  
+  file = []
+  for i in f:
+    if i != '':
+      file.append(i)
   #print(file)
+
   for i in file :
     if i not in FT :
       
@@ -69,30 +82,30 @@ while True :
       
       if extension.lower() in Img :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Image")
-        os.system(f'echo "{i} ->" Image >> log.txt ')
+        os.system(f'echo "{i} ->" Image >> {chemin}/log.txt ')
       elif extension.lower() in Word :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Word")
-        os.system(f'echo "{i} ->" Word >> log.txt ')
+        os.system(f'echo "{i} ->" Word >> {chemin}/log.txt ')
       elif extension.lower() in Pdf :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Pdf")
-        os.system(f'echo "{i} ->" Pdf >> log.txt ')
+        os.system(f'echo "{i} ->" Pdf >> {chemin}/log.txt ')
       elif extension.lower() in Exe :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Exe")
-        os.system(f'echo "{i} ->" Exe >> log.txt ')
+        os.system(f'echo "{i} ->" Exe >> {chemin}/log.txt ')
       elif extension.lower() in Son :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Son")
-        os.system(f'echo "{i} ->" Son >> log.txt ')
+        os.system(f'echo "{i} ->" Son >> {chemin}/log.txt ')
       elif extension.lower() in Video :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Video")
-        os.system(f'echo "{i} ->" Video >> log.txt ')
+        os.system(f'echo "{i} ->" Video >> {chemin}/log.txt ')
       elif extension.lower() in Zip :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Zip")
-        os.system(f'echo "{i} ->" Zip >> log.txt ')
+        os.system(f'echo "{i} ->" Zip >> {chemin}/log.txt ')
       elif extension.lower() in Code :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Code")
-        os.system(f'echo "{i} ->" Code >> log.txt ')
+        os.system(f'echo "{i} ->" Code >> {chemin}/log.txt ')
       else :
         os.system("mv " + str(chemin) + str(name) + " "  + str(chemin) + "/Reste")
-        os.system(f'echo "{i} ->" Reste >> log.txt ')
+        os.system(f'echo "{i} ->" Reste >> {chemin}/log.txt ')
   time.sleep(1)
       
